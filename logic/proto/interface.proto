@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package proto;
+option go_package = ".;proto";
+
+message MkdirRequest {
+  string Name = 1;
+  uint32 Mode = 2;
+}
+
+message RmdirRequest {
+  string Name = 1;
+}
+
+message RenameRequest {
+  string OldName = 1;
+  string NewName = 2;
+}
+
+message CreateRequest {
+  string Name = 1;
+  uint32 Mode = 2;
+  uint32 Flags = 3;
+}
+
+message WriteRequest {
+  string Name = 1;
+  bytes data = 2;
+  int64 offset = 3;
+}
+
+message MknodRequest {
+  string Name = 1;
+  uint32 Mode = 2;
+  uint32 Dev = 3;
+}
+
+message BindPathRequest {
+  string Id = 1;
+}
+
+message Response {
+  bool Success = 1;
+}
+
+service NotifyService {
+  rpc Mkdir(MkdirRequest) returns (Response);
+  rpc Rmdir(RmdirRequest) returns (Response);
+  rpc Rename(RenameRequest) returns (Response);
+  rpc Create(CreateRequest) returns (Response);
+  rpc Write(WriteRequest) returns (Response);
+  rpc Mknod(MknodRequest) returns (Response);
+
+  rpc BindPath(BindPathRequest) returns (Response);
+}
