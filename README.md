@@ -1,6 +1,6 @@
 # myfuse
 
-基于 FUSE 简单实现的文件系统
+基于 FUSE 简单实现的文件系统工具
 
 ## 什么是 FUSE (Filesystem in Userspace)
 
